@@ -1,0 +1,323 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.exo-2{
+    font-family: "Exo 2", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(../background/6353238.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* Adjust the opacity as needed */
+    z-index: -1;
+}
+
+.wrapper{
+    width: 420px;
+    background: transparent;
+    border: 0.5px solid rgba(255, 255, 255, .1);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 30px 40px;
+}
+
+.wrapper h1{
+    font-size: 36px;
+    text-align: center;
+}
+
+.wrapper .input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 20px 45px 20px 20px;
+    color:white;
+}
+
+.input-box input::placeholder{
+    color: #dcdcdd;
+}
+
+.input-box{
+    position: relative;
+}
+
+input {
+    position: absolute;
+    width: 100%;
+    padding: 0 20px;
+    line-height: 80px;
+    transition: 0.1s ease;
+    border-radius: 10px;
+    background: transparent;
+    outline: none;
+    z-index: 1111;
+    
+}
+
+.wrapper select {
+    width: 100%;
+    padding: 12px 12px 12px 20px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 5px;
+    color: #dcdcdd;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Add transition for border and box-shadow */
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23FFC850" stroke="%23000000" stroke-width="1" d="M7 14.001h2v2H7z"></path><path fill="%23FFC850" stroke="%23000000" stroke-width="1" d="M19 2h-8a2 2 0 0 0-2 2v6H5c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2zM5 20v-8h6v8H5zm9-12h-2V6h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V6h2v2z"></path></svg>') no-repeat calc(100% - 25px) center;
+    background-size: 25px; /* Adjust size of the arrow */
+}
+
+.wrapper select option {
+    color: black;
+}
+
+
+.labelLine {
+    color: #dcdcdd;
+    top:25%;
+    position: absolute;
+    padding: 0 21px;
+    transition: 0.2s ease;
+}
+
+select:valid,
+input:focus,
+input:valid {
+    border-color: #A3E4FF;
+    box-shadow: 0 0 5px #A3E4FF;
+    clip-path: polygon(0 0, 5% 0, 5% 10px, 30% 10px, 30% 0, 100% 0, 100% 100%, 0 100%); /* Adjusted to create a smaller gap */
+}
+
+select {
+    clip-path: polygon(0 0, 5% 0, 5% 10px, 30% 10px, 30% 0, 100% 0, 100% 100%, 0 100%); /* Adjusted to create a smaller gap */
+}
+
+select:required:invalid{
+    border-color: rgba(255, 255, 255, .2); /* Keep the border color as the default when invalid */
+    box-shadow: none; /* Remove the box shadow when invalid */
+    color: #000000;
+}
+
+input:focus {
+    border-color: #A3E4FF;
+    box-shadow: 0 0 5px #A3E4FF;
+    transition: clip-path 0.8s ease;
+}
+
+input:not(:focus):not(:valid) {
+    clip-path: none;
+    transition: clip-path 0.8s ease;
+}
+
+input:focus + .labelLine,
+input:valid + .labelLine{
+    height: 30px;
+    line-height: 30px;
+    transform: translate(-1px, -28px) scale(0.88);
+    z-index: 11111;
+}
+
+.input-box i{
+    position: absolute;
+    right: 20px;
+    top: 30%;
+    transform: translate(-50%);
+    font-size: 20px;
+}
+
+.wrapper .remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    margin: -15px 0 15px;
+}
+
+.remember-forgot label input{
+    accent-color: #fff;
+    margin-right: 3px;
+}
+
+.remember-forgot a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+
+.wrapper .btn{
+    width: 100%;
+    height: 45px;
+    background:  #C4C3D0;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    border: none;
+}
+
+.wrapper .btn:hover {
+    background: #B3B2BF; /* Change background color on hover */
+    color: #333; /* Ensure text color remains the same */
+}
+
+.wrapper .register-link{
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.register-link p a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-link p a:hover{
+    text-decoration: underline;
+}
+
+.bg-blur {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(25px);
+    border-radius: 15px;
+}
+
+.text-outline {
+    text-shadow: 
+        -1px -1px 0 #000,  
+        1px -1px 0 #000,
+        -1px  1px 0 #000,
+        1px  1px 0 #000;
+}
+
+.btn-paleCyan {
+    background-color: #A3E4FF;
+    border-color: #A3E4FF;
+    color: #000; 
+    border-radius: 100px;
+    
+}
+
+.text-black {
+    color: #000;
+}
+
+.btn-paleCyan:hover {
+    background-color: #91d4e6;
+    border-color: #91d4e6;
+}
+
+.btn-lavenderGray {
+    background-color: #C4C3D0;
+    border-color: #C4C3D0;
+    color: #000; 
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.text-darkPink {
+    color: #fc00b0;
+}   
+
+.text-neonPink {
+    color:#FF66B2;
+}
+
+.text-softYellow{
+    color:#FFD580;
+}
+
+.text-darkerSoftYellow{
+    color:#FFC850;
+}
+
+.text-darkerThanDarkSoftYellow{
+    color:#e6aa3c;
+}
+
+.text-paleCyan {
+    color: #A3E4FF;
+}
+
+.btn-lavenderGray:hover {
+    background-color: #B3B2BF;
+    border-color: #B3B2BF;
+}
+
+.text-lavenderGray {
+    color: #C4C3D0 !important;
+}
+
+.ts-1 {
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
+}
+
+.h-25 {
+    height: 25px;
+    line-height: 25px;
+}
+
+.h-33 {
+    height: 33px;
+    line-height: 33px;
+}
+
+.h-40{
+    height: 40px;
+    line-height: 40px;
+}
+
+.h-50 {
+    height: 50px;
+    line-height: 50px;
+}
+
+.h-100 {
+    height: 100px;
+    line-height: 100px;
+}
+
