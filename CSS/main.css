@@ -91,6 +91,36 @@ input {
     
 }
 
+@keyframes rotateBackground {
+    from {
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 200, 80, 1);stroke: rgba(0,0,0,1);stroke-width: 1px;transform: rotate(0deg);msFilter:;"><path d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19z"></path></svg>') no-repeat calc(100% - 27px) center;
+        background-size: 20px;
+    }
+    to {
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 200, 80, 1);stroke: rgba(0,0,0,1);stroke-width: 1px;transform: rotate(180deg);msFilter:;"><path d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19z"></path></svg>') no-repeat calc(100% - 27px) center;
+        background-size: 20px;
+    }
+}
+
+@keyframes rotateBackgroundBack {
+    from {
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 200, 80, 1);stroke: rgba(0,0,0,1);stroke-width: 1px;transform: rotate(180deg);msFilter:;"><path d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19z"></path></svg>') no-repeat calc(100% - 27px) center;
+        background-size: 20px;
+    }
+    to {
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 200, 80, 1);stroke: rgba(0,0,0,1);stroke-width: 1px;transform: rotate(0deg);msFilter:;"><path d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19z"></path></svg>') no-repeat calc(100% - 27px) center;
+        background-size: 20px;
+    }
+}
+
+.rotate {
+    animation: rotateBackground 0.3s forwards;
+}
+
+.rotate-back {
+    animation: rotateBackgroundBack 0.3s forwards;
+}
+
 .wrapper select {
     width: 100%;
     padding: 12px 12px 12px 20px;
@@ -101,14 +131,27 @@ input {
     outline: none;
     transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Add transition for border and box-shadow */
     appearance: none;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="%23FFC850" stroke="%23000000" stroke-width="1" d="M7 14.001h2v2H7z"></path><path fill="%23FFC850" stroke="%23000000" stroke-width="1" d="M19 2h-8a2 2 0 0 0-2 2v6H5c-1.103 0-2 .897-2 2v9a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a2 2 0 0 0-2-2zM5 20v-8h6v8H5zm9-12h-2V6h2v2zm4 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V6h2v2z"></path></svg>') no-repeat calc(100% - 25px) center;
-    background-size: 25px; /* Adjust size of the arrow */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 200, 80, 1);stroke: rgba(0,0,0,1);stroke-width: 1px;transform: rotate(0deg);msFilter:;"><path d="M3 19h18a1.002 1.002 0 0 0 .823-1.569l-9-13c-.373-.539-1.271-.539-1.645 0l-9 13A.999.999 0 0 0 3 19z"></path></svg>') no-repeat calc(100% - 27px) center;
+    background-size: 20px; /* Adjust size of the arrow */
+}
+
+.select-menu .select-btn{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 55px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    padding: 20x;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .1);
 }
 
 .wrapper select option {
     color: black;
 }
-
 
 .labelLine {
     color: #dcdcdd;
@@ -136,6 +179,10 @@ select:required:invalid{
     color: #000000;
 }
 
+option {
+    background-color: #dcdcdc;
+}
+
 input:focus {
     border-color: #A3E4FF;
     box-shadow: 0 0 5px #A3E4FF;
@@ -147,8 +194,14 @@ input:not(:focus):not(:valid) {
     transition: clip-path 0.8s ease;
 }
 
+.valid {
+    color:white;
+}
+
+select:focus + .labelLine,
 input:focus + .labelLine,
 input:valid + .labelLine{
+    color:white;
     height: 30px;
     line-height: 30px;
     transform: translate(-1px, -28px) scale(0.88);

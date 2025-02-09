@@ -12,24 +12,24 @@
 <div class="wrapper border-dark shadow-lg">
     <form method="post" action="register.php">
     <h1 class="exo-2 text-black mb-5">Welcome</h1>
-    <div class="exo-2">
-        <div class="labelLine" style="font-size: 14px">Department</div>
-        <select class="lavender-gray bg-transparent" required>
-            <option value="" selected invalid>No department selected</option>
-            <option value="CTE">CTE</option>
-            <option value="IT">Information Technology</option>
-            <option value="ACT">ACT</option>
-            <option value="CS">Computer Science</option>
-            <option value="CBA">CBA</option>
-        </select>
-    </div>
+    <div class="exo-2 select-container">
+    <div class="labelLine department-label" id="department-label" style="font-size: 14px">Department</div>
+    <select class="lavender-gray bg-transparent" id="department-select" required>
+        <option value="" selected invalid>-----------</option>
+        <option value="CTE">CTE</option>
+        <option value="IT">Information Technology</option>
+        <option value="ACT">ACT</option>
+        <option value="CS">Computer Science</option>
+        <option value="CBA">CBA</option>
+    </select>
+</div>
     <div class="input-box exo-2">
-        <input class="lavender-gray" type="text" placeholder="" name="username" id="username" required>
+        <input class="lavender-gray" type="text" placeholder="" name="username" id="username" required autocomplete="off">
         <div class="labelLine">Username</div>
         <i class='bx bxs-user text-darkerSoftYellow text-outline'></i>
     </div>
     <div class="input-box exo-2">
-        <input type="password" placeholder="" name="password" id="password" required>
+        <input type="password" placeholder="" name="password" id="password" required autocomplete="off">
         <div class="labelLine">Password</div>
         <i class='bx bxs-lock-alt text-darkerSoftYellow text-outline' ></i>
     </div>
