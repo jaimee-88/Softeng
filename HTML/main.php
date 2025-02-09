@@ -11,7 +11,7 @@
 <body>
 <div class="wrapper border-dark shadow-lg">
     <form action="">
-    <h1 class="exo-2 text-black mb-5">Sign in</h1>
+    <h1 class="exo-2 text-black mb-5">Welcome</h1>
     <div class="exo-2">
         <div class="labelLine" style="font-size: 14px">Department</div>
         <select class="lavender-gray bg-transparent" required>
