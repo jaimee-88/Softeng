@@ -1,3 +1,45 @@
+<?php
+include('connect.php');
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    if (empty($username) || empty($password)) {
+        echo "
+            <script>alert('PLEASE FILL THE USERNAME/PASSWORD');</script>
+            ";
+    } else {
+        // Fetch the hashed password and usertype from the database
+        $stmt = $conn->prepare("SELECT password FROM register WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+
+            // Verify the password using password_verify()
+            if (password_verify($password, $row["password"])) {
+               
+                    $_SESSION["username"] = $username;
+                    header("Location:home.php");
+                    exit;
+                } 
+        }
+        else {
+                echo "
+            <script>alert('WRONG USERNAME/PASSWORD');</script>
+            ";
+            }
+        $stmt->close();
+    }
+
+
+}
+mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -10,19 +52,9 @@
     </head>
 <body>
 <div class="wrapper border-dark shadow-lg">
-    <form method="post" action="register.php">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="POST">
     <h1 class="exo-2 text-black mb-5">Welcome</h1>
     <div class="exo-2 select-container">
-    <div class="labelLine department-label" id="department-label" style="font-size: 14px">Department</div>
-    <select class="lavender-gray bg-transparent" id="department-select" required>
-        <option value="" selected invalid>-----------</option>
-        <option value="CTE">CTE</option>
-        <option value="IT">Information Technology</option>
-        <option value="ACT">ACT</option>
-        <option value="CS">Computer Science</option>
-        <option value="CBA">CBA</option>
-    </select>
-</div>
     <div class="input-box exo-2">
         <input class="lavender-gray" type="text" placeholder="" name="username" id="username" required autocomplete="off">
         <div class="labelLine">Username</div>
