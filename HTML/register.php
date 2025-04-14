@@ -33,6 +33,8 @@ if (isset($_POST['submit'])) {
             echo "<script>alert('Registration error: " . $stmt->error . "');</script>";
         }
         $stmt->close(); // Close the statement
+
+        //test
     }
 }
 
