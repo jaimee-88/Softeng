@@ -10,6 +10,6 @@ if($conn->connect_error){
 }
 
 if($conn){
-    echo "Connected to the database";
+    //echo "Connected to the database";
 }
 ?>
