@@ -28,16 +28,13 @@ if (isset($_POST['submit'])) {
         $stmt->bind_param("sssssss", $fullname, $email, $studentID, $username, $hashedPassword, $gender, $department);
 
         if ($stmt->execute()) {
-            echo "<script>alert('YOU SUCCESSFULLY REGISTERED'); window.location.href = '#';</script>";
+            echo "<script>alert('YOU SUCCESSFULLY REGISTERED'); window.location.href = 'index.php';</script>";
         } else {
             echo "<script>alert('Registration error: " . $stmt->error . "');</script>";
         }
-        $stmt->close(); // Close the statement
-
-        //test
+        $stmt->close();
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,68 +42,61 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Registration</title>
-    <!-- Include your CSS framework (Tailwind, Bootstrap, etc.) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href='../CSS/register.css' rel='stylesheet'>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
-        <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Student Registration</h2>
-
-        <form class="space-y-4" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-            <!-- Name -->
-            <div>
-                <label class="block mb-2 text-sm font-medium text-gray-900">Full Name</label>
-                <input type="text" name="fullname" required
-                    class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+<body>
+<div class="wrapper border-dark shadow-lg">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+        <h1 class="exo-2 text-black mb-5">Student Registration</h1>
+        <div class="exo-2 select-container">
+            <!-- Full Name -->
+            <div class="input-box exo-2">
+                <input type="text" name="fullname" id="fullname" required autocomplete="off">
+                <div class="labelLine">Full Name</div>
             </div>
 
             <!-- Email -->
-            <div>
-                <label class="block mb-2 text-sm font-medium text-gray-900">Email</label>
-                <input type="email" name="email" required
-                    class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+            <div class="input-box exo-2">
+                <input type="email" name="email" id="email" id="email" required autocomplete="off" placeholder="____">
+                <div class="labelLine">Email Addr.</div>
             </div>
 
             <!-- Student ID -->
-            <div>
-                <label class="block mb-2 text-sm font-medium text-gray-900">Student ID</label>
-                <input type="text" name="student-id" required
-                    class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+            <div class="input-box exo-2">
+                <input type="text" name="student-id" id="student-id" required autocomplete="off">
+                <div class="labelLine">Student ID</div>
             </div>
 
             <!-- Username -->
-            <div>
-                <label class="block mb-2 text-sm font-medium text-gray-900">Username</label>
-                <input type="text" name="username" required
-                    class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+            <div class="input-box exo-2">
+                <input type="text" name="username" id="username" required autocomplete="off">
+                <div class="labelLine">Username</div>
+                <i class='bx bxs-user text-darkerSoftYellow text-outline'></i>
             </div>
 
             <!-- Password -->
-            <div>
-                <label class="block mb-2 text-sm font-medium text-gray-900">Password</label>
-                <input type="password" name="password" required
-                    class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+            <div class="input-box exo-2">
+                <input type="password" name="password" id="password" required autocomplete="off">
+                <div class="labelLine">Password</div>
+                <i class='bx bxs-lock-alt text-darkerSoftYellow text-outline'></i>
             </div>
 
             <!-- Gender -->
-            <div>
-                <label class="block mb-2 text-sm font-medium text-gray-900">Gender</label>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="flex items-center">
-                        <input type="radio" name="gender" id="male" value="Male" class="w-4 h-4 text-blue-600">
-                        <label for="male" class="ml-2 text-sm text-gray-900">Male</label>
-                    </div>
-                    <div class="flex items-center">
-                        <input type="radio" name="gender" id="female" value="Female" class="w-4 h-4 text-blue-600">
-                        <label for="female" class="ml-2 text-sm text-gray-900">Female</label>
-                    </div>
-                </div>
+            <div class="exo-2">
+                <label class="labelLine"></label>
+                <select name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
             </div>
 
             <!-- Department -->
-            <div>
-                <label class="block mb-2 text-sm font-medium text-gray-900">Department</label>
-                <select class="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" name="department">
+            <div class="exo-2">
+                <label class="labelLine"></label>
+                <select name="department" required>
                     <option value="">Select Department</option>
                     <option value="CITCS">CITCS</option>
                     <option value="CAS">CAS</option>
@@ -118,13 +108,11 @@ if (isset($_POST['submit'])) {
             </div>
 
             <!-- Submit Button -->
-            <button type="submit" name="submit"
-                class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                Register
-            </button>
-        </form>
-    </div>
-    <!-- Add your JavaScript file after the HTML -->
-    <script src="script.js"></script>
+            <button type="submit" class="btn exo-2" name="submit">Register</button>
+        </div>
+    </form>
+    <p class="mt-3 text-center exo-2">Already have an account? <a href="index.php" class="text-yellow text-outline">Login</a></p>
+</div>
+<script src="../JavaScript/script.js"></script>
 </body>
 </html>

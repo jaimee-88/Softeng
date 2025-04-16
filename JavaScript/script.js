@@ -1,17 +1,18 @@
 const loginButton = document.getElementById('loginButton');
 const loginForm = document.getElementById('login');
 
-document.addEventListener('DOMContentLoaded', function() {
-    const selectElement = document.querySelector('.wrapper select');
-    
-    selectElement.addEventListener('click', function() {
-        if (selectElement.classList.contains('rotate')) {
-            selectElement.classList.remove('rotate');
-            selectElement.classList.add('rotate-back');
-        } else {
-            selectElement.classList.remove('rotate-back');
-            selectElement.classList.add('rotate');
-        }
+document.addEventListener('DOMContentLoaded', function () {
+    const selectElements = document.querySelectorAll('.wrapper select'); // Select all dropdowns in the wrapper
+    selectElements.forEach(function (selectElement) {
+        selectElement.addEventListener('click', function () {
+            if (selectElement.classList.contains('rotate')) {
+                selectElement.classList.remove('rotate');
+                selectElement.classList.add('rotate-back');
+            } else {
+                selectElement.classList.remove('rotate-back');
+                selectElement.classList.add('rotate');
+            }
+        });
     });
 });
 
