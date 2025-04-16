@@ -18,10 +18,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
-
             // Verify the password using password_verify()
             if (password_verify($password, $row["password"])) {
-               
                     $_SESSION["username"] = $username;
                     header("Location:home.php");
                     exit;
@@ -65,11 +63,9 @@ mysqli_close($conn);
         <div class="labelLine">Password</div>
         <i class='bx bxs-lock-alt text-darkerSoftYellow text-outline' ></i>
     </div>
-    <div class="remember-forgot exo-2 text-black">
-        <!-- <label><input type="checkbox" class="opacity-50">Remember Me</label> -->
-    </div>
     <button type="submit" class="btn exo-2" name="login" value="login">Login</button>
     </form>
+    <p class="mt-3 text-center">Don't have an account? <a href="register.php" class="text-yellow text-outline">Register</a></p>
 </div>
 <script src="../JavaScript/script.js"></script>     
 </body>
